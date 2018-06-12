@@ -1,3 +1,6 @@
 [submodule "Lua-Simple-XML-Parser"]
 	path = Lua-Simple-XML-Parser
 	url = https://github.com/Cluain/Lua-Simple-XML-Parser
+[submodule "WireBait"]
+	path = WireBait
+	url = https://github.com/MarkoPaul0/WireBait
