@@ -9,8 +9,11 @@ Beta version - needs further refinement to be more efficient and to fill out the
 # Dependencies
 Lua-Simple-XML-Parser Lua library - managed as a related github project submodule.   Need to set LUA_PATH prior to starting Wireshark
 
+WireBait standalone wireshark plugin/unit testing.   Unfortunately this only supports one protocol per plugin test at present.  Again - a submodule.
+
 # Installation
-1. Ensure SimpleXML  Lua submodule checked out and LUA_PATH set appropriately. 
+1. Ensure SimpleXML  Lua submodule checked out and LUA_PATH set appropriately.  For new lua users, LUA_PATH=/path/to/sdnshark/Lua-Simple-Xml-Parser/?.lua
+
 2. Copy sdn.lua to your $HOME/.config/wireshark/plugins directory and hit Ctrl-Shift-L to reload Lua plugins.
 
 

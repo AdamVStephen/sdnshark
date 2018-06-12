@@ -10,6 +10,26 @@
 -- https://osqa-ask.wireshark.org/questions/63194/lua-dissector-from-xml-file
 -- https://osqa-ask.wireshark.org/questions/4639/extracting-soap-xml-payload
 
+--[[Use this snipet of code to test your dissectorn. You can test your dissector without wireshark by running the dissector script directly!]]
+if disable_lua == nil and not _WIREBAIT_ON_ then  --disable_lua == nil checks if this script is being run from wireshark.
+  local wirebait = require("wirebait");
+  local dissector_tester = wirebait.plugin_tester.new({dissector_filepath="sdn.lua", only_show_dissected_packets=true});
+  local sdn_hex_data = "0E 07 DE 02 22 FC 03 19   75 5A 7F FF FF FF FF FF"
+  .. "FF FF F2 F8 22 FD DD 04  FC E6 8A A6 80 00 00 00  00 00 00 01 57 69 72 65  62 61 69 74 00 62 79 20" 
+  .. "4D 61 72 6B 6F 50 61 75  6C 30 00 00 AA BB CC 11  22 33 C0 A8 0E 1C AB CD  EF 12 34 56 78 90 AB CD" 
+  .. "EF 12 34 56 78 90 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00" 
+  .. "00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00" 
+  .. "00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00";
+  --[[Note that the white spaces don't matter in the hex string.]]
+  
+  --[[Two options here:
+        - call dissector_tester:dissectHexData() to dissect hex data from a string (no pcap needed) 
+        - call dissector_tester:dissectPcap() to dissect packets from a pcap file]]
+  dissector_tester:dissectHexData(sdn_hex_data)    --dissection from hex data contained in a string
+  return
+end
+
+
 print("SDN protocol - discovering packets...")
 
 local sdnTopics = {};
